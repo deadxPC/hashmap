@@ -41,10 +41,12 @@ Hashmap *hashmap_new(size_t num_buckets,
 
     return hashmap;
 
-error_buckets_alloc:
+error_buckets_alloc: {
     free(hashmap);
-error_hashmap_alloc:
+}
+error_hashmap_alloc: {
     return NULL;
+}
 }
 
 void hashmap_free(Hashmap *hashmap) {
